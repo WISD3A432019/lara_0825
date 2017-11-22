@@ -58,3 +58,15 @@ Route::get('save', function () {
     $post ->content ='save content';
     $post ->save();
 });
+/*刪除方法*/
+
+Route::get('delete', function () {
+    $post = \App\Post::find(1);
+    $post ->delete();
+});
+Route::get('destroy', function () {
+    \App\Post::destroy(2);
+});
+Route::get('destroymul', function () {
+    \App\Post::destroy(3,5,7);
+});
