@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/*新增方法*/
 Route::get('/test', function () {
     \App\Post::create([
 	'title'=> 'test title',
@@ -27,7 +28,7 @@ Route::get('/newadd', function () {
     $post -> content ='newadd content';
     $post -> save();
 });
-
+/*查詢方法*/
 Route::get('/all', function () {
     $posts = \App\Post::all();
     dd($posts); 
@@ -41,4 +42,19 @@ Route::get('/find', function () {
 Route::get('/where', function () {
     $posts=\App\Post::where('id','<',10)->orderBy('id','DESC')->get();
 	dd($posts);
+});
+/*更新方法*/
+
+Route::get('update', function () {
+    $post = \App\Post::find(1);
+    $post ->update([
+    	'title' =>'update title',
+    	'content' => 'update content'
+    ]);
+});
+Route::get('save', function () {
+    $post = \App\Post::find(2);
+    $post ->title ='save title';
+    $post ->content ='save content';
+    $post ->save();
 });
