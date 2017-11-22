@@ -14,7 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('home', ['as'=>'home.index','uses'=>'HomeController@index']);
-
-Route::get('hello/{name?}', ['as'=>'hello.index','uses'=>'HelloController@index']);
+Route::get('/test', function () {
+    \App\Post::create([
+	'title'=> 'test title',
+	'content'=>'test content',
+	]);
+});
 
