@@ -28,3 +28,17 @@ Route::get('/newadd', function () {
     $post -> save();
 });
 
+Route::get('/all', function () {
+    $posts = \App\Post::all();
+    dd($posts); 
+});
+
+Route::get('/find', function () {
+    $posts = \App\Post::find(1);
+    dd($posts); 
+});
+
+Route::get('/where', function () {
+    $posts=\App\Post::where('id','<',10)->orderBy('id','DESC')->get();
+	dd($posts);
+});
