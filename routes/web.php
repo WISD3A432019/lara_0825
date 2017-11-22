@@ -21,3 +21,10 @@ Route::get('/test', function () {
 	]);
 });
 
+Route::get('/newadd', function () {
+    $post = new \App\Post();
+    $post -> title ='newadd title';
+    $post -> content ='newadd content';
+    $post -> save();
+});
+
