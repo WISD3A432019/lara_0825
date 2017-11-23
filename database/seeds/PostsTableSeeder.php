@@ -12,5 +12,12 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         //
+        foreach (range(1,20) as $number) 
+        {
+        	App\Post::create([
+        		'title' => 'title'.$number,
+        		'content' =>'content'.$number,
+        	]);
+        }
     }
 }
