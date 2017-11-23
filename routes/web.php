@@ -28,6 +28,15 @@ Route::get('/newadd', function () {
     $post -> content ='newadd content';
     $post -> save();
 });
+
+Route::get('/newcmadd', function () {
+    $post= new \App\Comment();
+    $post -> title = 'saved title';
+    $post -> content = 'post1 com';
+     $post -> post_id = '1';
+    $post->save();
+});
+
 /*查詢方法*/
 Route::get('/all', function () {
     $posts = \App\Post::all();
@@ -81,4 +90,11 @@ Route::get('model', function () {
 	dd($fourthPost);
 	$lastPost=\App\Post::orderBy('id','DESC')->first();
 	dd($lastPost);
+});
+
+Route::get('testt', function () {
+	$post = \App\Post::find(1);
+	foreach ($post->comments as $comment){
+	echo $comment->content.'<br>';
+	}
 });
