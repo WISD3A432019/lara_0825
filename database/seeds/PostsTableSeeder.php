@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class PostsTableSeeder extends Seeder
 {
@@ -13,12 +14,17 @@ class PostsTableSeeder extends Seeder
     {
         //
         App\Post::truncate();
+        $total=20;
         foreach (range(1,20) as $number) 
         {
-
+			
         	App\Post::create([
         		'title' => 'title'.$number,
         		'content' =>'content'.$number,
+				'is_feature'=>rand(0,1),
+				'created_at'=>Carbon::now()->subDays($total-$number),
+				'updated_at'=>Carbon::now()->subDays($total-$number),
+
         	]);
         }
     }
