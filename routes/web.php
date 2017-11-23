@@ -70,3 +70,15 @@ Route::get('destroy', function () {
 Route::get('destroymul', function () {
     \App\Post::destroy(3,5,7);
 });
+
+/*了解 Model 和 Collection 的差異*/
+Route::get('collection', function () {
+    $allPosts = \App\Post::all();
+	dd($allPosts);
+});
+Route::get('model', function () {
+	$fourthPost=\App\Post::find(4);
+	dd($fourthPost);
+	$lastPost=\App\Post::orderBy('id','DESC')->first();
+	dd($lastPost);
+});
